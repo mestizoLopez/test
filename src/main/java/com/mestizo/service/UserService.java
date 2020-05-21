@@ -1,8 +1,9 @@
 package com.mestizo.service;
 
+import com.mestizo.utils.Utils;
+import com.mestizo.model.User;
 import com.mestizo.model.dto.UserDto;
 import com.mestizo.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +18,15 @@ public class UserService {
 
     public List<UserDto> findAll(){
 
-        List<UserDto> userDtos= userRepository.findAll()
+        return userRepository.findAll()
                 .stream()
-                .map(user ->{
-                    UserDto userDto = new UserDto();
-                     BeanUtils.copyProperties(userDto,user);
-                    return userDto;
-                })
+                .map(user -> Utils.convertToDto(user,UserDto.class))
                 .collect(Collectors.toList());
+    }
 
-        return userDtos;
+    public String save(UserDto userDto){
+        User user = Utils.convertToEntity(userDto,User.class);
+        return userRepository.save(user).getId();
     }
 
 }

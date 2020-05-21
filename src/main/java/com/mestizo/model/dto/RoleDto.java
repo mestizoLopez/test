@@ -9,8 +9,4 @@ public class RoleDto {
 
     private String name;
 
-    private String roleName;
-
-    private String otherValue;
-
 }

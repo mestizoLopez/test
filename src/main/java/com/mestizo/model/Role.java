@@ -7,16 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document
-@AllArgsConstructor
 public class Role {
 
     @Id
     private String id;
 
     private String name;
-
-    private String roleName;
-
-    private String otherValue;
 
 }

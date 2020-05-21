@@ -1,7 +1,10 @@
 package com.mestizo.model.dto;
 
+import com.mestizo.model.Role;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class UserDto {
@@ -14,8 +17,6 @@ public class UserDto {
 
     private String email;
 
-    private String roleName;
-
-    private String otherValue;
+    private List<Role> roleList;
 
 }
